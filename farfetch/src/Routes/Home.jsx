@@ -230,25 +230,6 @@ export default function Home() {
                 
                 
             </Flex>
-            <Flex w='95%' m='auto' mt='150'>
-                <Stack className='container1'>
-                    <TbHanger size='30px'/>
-                    <Text>HOW TO SHOP</Text>
-                    <Text>Your guide to shopping and placing orders</Text>
-                </Stack>
-                <Spacer />
-                <Stack className='container1'>
-                    <RiQuestionLine size='30px'/>
-                    <Text>FAQS</Text>
-                    <Text>Your questions answered</Text>
-                </Stack>
-                <Spacer />
-                <Stack className='container1'>
-                    <RiChat2Line size='30px'/>
-                    <Text>NEED HELP?</Text>
-                    <Text>Contact our global customer service team</Text>
-                </Stack>
-            </Flex>
             <SignUpForm />
         </>
     )
