@@ -39,7 +39,7 @@ export default function Navbar1() {
         fontWeight: 'bold'
     }
     return (
-        <Stack bgColor='white' alignContent='center' p='5' pb='2' className='mainNavbar'>
+        <Stack bgColor='white' alignContent='center' p='5' pb='0.8' className='mainNavbar'>
             <Flex>
                <Flex>
                     <Button variant='ghost'><NavLink style={({isActive})=>isActive?activeStyle:null} to='/women'>Women</NavLink></Button>
@@ -56,7 +56,7 @@ export default function Navbar1() {
                 </Flex> 
             </Flex>
             <Flex alignContent='center' p='4'>
-                <Flex hidden={loco.pathname=="/"?true:false} w='75%'>
+                <Flex hidden={loco.pathname=="/"?true:false} w='70%'>
                     <Text onMouseEnter={()=>displayer(changenewIn)}>New In</Text>
                     <Spacer />
                     <Text onMouseEnter={()=>displayer(changeshopby)}>Shop By</Text>
@@ -75,7 +75,7 @@ export default function Navbar1() {
                     <Spacer />
                     <Text onMouseEnter={()=>displayer(changepreowned)}>Pre-Owned</Text>
                     <Spacer />
-                    <Text onMouseEnter={()=>displayer(changesale)}>Sale</Text>
+                    <Text onMouseEnter={()=>displayer(changesale)} textColor='red'>Sale</Text>
                 </Flex>                
             <Spacer />
             <Input w='19%' fontSize='16px' p='5' pl='3' placeholder='Search' size='xs'/>

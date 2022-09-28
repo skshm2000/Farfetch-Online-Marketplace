@@ -1,5 +1,8 @@
 import {Stack, Radio,Checkbox,Flex,Spacer, RadioGroup,Box, Text, Heading, Button, Input, InputGroup, InputLeftAddon} from '@chakra-ui/react'
 import { useState, useRef } from 'react'
+import { TbHanger } from "react-icons/tb";
+import { RiQuestionLine, RiChat2Line } from "react-icons/ri";
+import '../Routes/Home.css'
 
 export default function SignUpForm() {
     const [value, setValue] = useState('0')
@@ -16,6 +19,27 @@ export default function SignUpForm() {
         changeShowNumber(!numberChecker.current.checked)
     }
     return (
+        <>
+        <Flex w='95%' m='auto' mt='150'>
+                <Stack className='container1'>
+                    <TbHanger size='30px'/>
+                    <Text>HOW TO SHOP</Text>
+                    <Text>Your guide to shopping and placing orders</Text>
+                </Stack>
+                <Spacer />
+                <Stack className='container1'>
+                    <RiQuestionLine size='30px'/>
+                    <Text>FAQS</Text>
+                    <Text>Your questions answered</Text>
+                </Stack>
+                <Spacer />
+                <Stack className='container1'>
+                    <RiChat2Line size='30px'/>
+                    <Text>NEED HELP?</Text>
+                    <Text>Contact our global customer service team</Text>
+                </Stack>
+            </Flex>
+
         <Stack w='32%' m='auto' pt='150px' pb='50px' pr='20px' pl='20px'>
             <Heading fontFamily='farfetch'>SIGN UP AND GET 15% OFF</Heading>
             <Text>Sign up for promotions, tailored new arrivals, stock <br /> updates and more – straight to your inbox</Text>
@@ -40,5 +64,6 @@ export default function SignUpForm() {
                 <Button bgColor='#222222' w='100%' color='white'>Sign Up</Button>
             </Box>            
         </Stack>
+        </>
     )
 }
