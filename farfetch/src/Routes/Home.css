@@ -1,0 +1,56 @@
+@font-face {
+    font-family: farfetch;
+    src: url('nimbus-sans-d-ot-bold-extended.ttf');
+    font-weight: normal;
+}
+
+.mainDiv {
+    position: relative;
+}
+
+.mainDiv:hover {
+    cursor: pointer;
+}
+
+.fgText {
+    position: absolute;
+    bottom: 40%;
+    left: 25%;
+    color: white;
+}
+
+.fgText1 {
+    position: absolute;
+    bottom: 40%;
+    left: 15%;
+    color: white;
+}
+
+.deptText {
+    font-size: 29px;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+.deptText1 {
+    font-size: 25px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.innerText {
+    text-align: left;
+    margin: 25px 0px;
+}
+
+.container1 {
+    text-align: left;
+    border: 1px solid lightgrey;
+    width: 30%;
+    padding: 20px 10px; 
+}
+
+.container1:hover{
+    background-color: #F5F5F5;
+}
