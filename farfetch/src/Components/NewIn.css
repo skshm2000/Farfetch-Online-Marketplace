@@ -1,0 +1,27 @@
+.item {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.heading {
+    font-size: 19px;
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.item:hover {
+    text-decoration: underline;
+}
+
+.gridder {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.mainNavbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
