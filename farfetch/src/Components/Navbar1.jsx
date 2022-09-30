@@ -1,8 +1,18 @@
 import {Flex, Stack,Text,Box,SimpleGrid, Spacer, Button, Image, Input} from '@chakra-ui/react'
-import {AiOutlineUser, AiOutlineHeart, AiOutlineShoppingCart} from 'react-icons/ai'
+import {AiOutlineUser, AiOutlineHeart, AiOutlineShoppingCart, AiFillGoogleCircle, AiFillApple, AiFillFacebook} from 'react-icons/ai'
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './NewIn.css'
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,Checkbox,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,useDisclosure
+} from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
 export default function Navbar1() {
     const Navigator = useNavigate()
@@ -17,6 +27,7 @@ export default function Navbar1() {
     const [preowned, changepreowned] = useState(true)
     const [sale, changesale] = useState(true)
     let loco = useLocation()
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     function takeHome() {
         Navigator('/')
@@ -35,9 +46,21 @@ export default function Navbar1() {
         }
     }
 
+    function clothingTaker() {
+        changeclothing(true)
+        if(loco.pathname=='/men') {
+            Navigator('/men/clothing')
+        } else if (loco.pathname=='/women') {
+            Navigator('/women/clothing')
+        } else if (loco.pathname=='/kids') {
+            Navigator('/kids/clothing')
+        }
+    }
+
     let activeStyle = {
         fontWeight: 'bold'
     }
+
     return (
         <Stack bgColor='white' alignContent='center' p='5' pb='0.8' className='mainNavbar'>
             <Flex>
@@ -50,7 +73,7 @@ export default function Navbar1() {
                 <Image onClick={takeHome} w='210px' h='30px' src="https://www.farfetch.com/static/images/logo.png" alt='Main Logo'/>
                 <Spacer />
                 <Flex>
-                    <Button variant='ghost'><AiOutlineUser size='30px'/></Button>
+                    <Button variant='ghost' onClick={onOpen}><AiOutlineUser size='30px'/></Button>
                     <Button variant='ghost' onClick={()=>Navigator('/wishlist')}><AiOutlineHeart  size='30px' /></Button>
                     <Button variant='ghost' onClick={()=>Navigator('/cart')}><AiOutlineShoppingCart  size='30px' /></Button>
                 </Flex> 
@@ -63,7 +86,7 @@ export default function Navbar1() {
                     <Spacer />
                     <Text onMouseEnter={()=>displayer(changebrands)}>Brands</Text>
                     <Spacer />
-                    <Text onMouseEnter={()=>displayer(changeclothing)}>Clothing</Text>
+                    <Text onMouseEnter={()=>displayer(changeclothing)} onClick={clothingTaker}>Clothing</Text>
                     <Spacer />
                     <Text onMouseEnter={()=>displayer(changeshoes)}>Shoes</Text>
                     <Spacer />
@@ -530,6 +553,67 @@ export default function Navbar1() {
                     <Text className='item'>Discover Now</Text>
                 </Stack>
             </SimpleGrid>
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                <ModalHeader>Come on in</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody >
+                <Tabs>
+                    <TabList>
+                        <Tab>SIGN IN</Tab>
+                        <Tab>I'M NEW HERE</Tab>
+                    </TabList>
+                    <TabPanels>
+                        <TabPanel>
+                        <Stack overflowY='scroll'>
+                            <label htmlFor="">
+                                Email Address
+                                <Input></Input>
+                            </label>
+                            <label htmlFor="">
+                                Password
+                                <Input></Input>
+                            </label>
+                            <Checkbox>Keep me signed in?</Checkbox>
+                            <Text>Forgot your password?</Text>
+                            <Button color='white' bgColor='#222222'>Sign in</Button>
+                            <Text textAlign='center'>or</Text>
+                            <Button variant='outline' leftIcon={<AiFillGoogleCircle/>}>Sign in with Google</Button>
+                            <Button variant='outline' leftIcon={<AiFillApple />}>Sign in with Apple</Button>
+                            <Button variant='outline' leftIcon={<AiFillFacebook/>}>Sign in with Facebook</Button>
+                        </Stack>
+                        </TabPanel>
+                        <TabPanel>
+                        <Stack overflowY='scroll'>
+                            <label htmlFor="">
+                                Name
+                                <Input></Input>
+                            </label>
+                            <label htmlFor="">
+                                Email Address
+                                <Input></Input>
+                            </label>
+                            <label htmlFor="">
+                                Password
+                                <Input></Input>
+                            </label>
+                            <Text>By registering, you agree with our Terms & <br /> Conditions and Privacy and Cookie Policy.</Text>
+
+                            <Checkbox>Sign up for early Sale access plus tailored new arrivals, trends and promotions. Find out more. To opt out, click unsubscribe in our emails.</Checkbox>
+                            <Button color='white' bgColor='#222222'>Register</Button>
+                            <Text textAlign='center'>or</Text>
+                            <Button variant='outline' leftIcon={<AiFillGoogleCircle/>}>Sign in with Google</Button>
+                            <Button variant='outline' leftIcon={<AiFillApple />}>Sign in with Apple</Button>
+                            <Button variant='outline' leftIcon={<AiFillFacebook/>}>Sign in with Facebook</Button>
+                        </Stack>
+                        </TabPanel>
+                    </TabPanels>
+                </Tabs>
+                </ModalBody>
+                </ModalContent>
+            </Modal>
         </Stack>
+
     )
 }

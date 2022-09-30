@@ -4,7 +4,7 @@ import { TbHanger } from "react-icons/tb";
 import { RiQuestionLine, RiChat2Line } from "react-icons/ri";
 import '../Routes/Home.css'
 
-export default function SignUpForm() {
+export default function SignUpForm({need="yes"}) {
     const [value, setValue] = useState('0')
     const [showEmail, changeShowEmail] = useState(false)
     const [showNumber, changeShowNumber] = useState(true)
@@ -20,7 +20,7 @@ export default function SignUpForm() {
     }
     return (
         <>
-        <Flex w='95%' m='auto' mt='150'>
+        {need=='yes'?<Flex w='95%' m='auto' mt='150'>
                 <Stack className='container1'>
                     <TbHanger size='30px'/>
                     <Text>HOW TO SHOP</Text>
@@ -38,7 +38,7 @@ export default function SignUpForm() {
                     <Text>NEED HELP?</Text>
                     <Text>Contact our global customer service team</Text>
                 </Stack>
-            </Flex>
+        </Flex>:null}       
 
         <Stack w='32%' m='auto' pt='150px' pb='50px' pr='20px' pl='20px'>
             <Heading fontFamily='farfetch'>SIGN UP AND GET 15% OFF</Heading>
