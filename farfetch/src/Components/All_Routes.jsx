@@ -6,6 +6,7 @@ import Men from '../Routes/Men'
 import Cart from '../Routes/Cart'
 import Wishlist from '../Routes/Wishlist'
 import ProductPage from '../Routes/ProductPage'
+import Clothing from '../Routes/Clothing'
 
 export default function AllRoute() {
 
@@ -17,7 +18,8 @@ export default function AllRoute() {
             <Route path="/kids" element={<Kids />}/>
             <Route path="/wishlist" element={<Wishlist />}/>
             <Route path="/cart" element={<Cart />}/>
-            <Route path='/:person/:id' element={<ProductPage/>}></Route>
+            <Route path='/:person/:id' element={<ProductPage />}></Route>
+            <Route path='/:person/clothing' element={<Clothing />}></Route>
         </Routes>
     )
 
