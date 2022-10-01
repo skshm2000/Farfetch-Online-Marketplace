@@ -1,9 +1,54 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
+  "cartItems": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": [
+    {
+      "id": 0,
+      "name": "Saksham Selwal",
+      "email": "sakshamselwal2000@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": 0.993478474275213,
+      "name": "Ashish",
+      "email": "Ashishselwal2000@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": 0.999361831064588,
+      "name": "Mahir",
+      "email": "Mahir@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": 0.5267741293688668,
+      "name": "Mahir",
+      "email": "mahir@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": 0.5949658919231442,
+      "name": "Navya",
+      "email": "Navya@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": 0.6511821968035596,
+      "name": "Akshay",
+      "email": "Akshay@gmail.com",
+      "password": "12345678"
+    }
+  ]
 }

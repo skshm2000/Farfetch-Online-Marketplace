@@ -6,17 +6,24 @@ import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
 import AuthContextProvider from './Context/AuthContext';
-
+import CartContextProvider from './Context/CartContext';
+import WishlistContextProdvider from './Context/WishlistContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AuthContextProvider>
-    <ChakraProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ChakraProvider>
-  </AuthContextProvider>
+  <WishlistContextProdvider>
+    <CartContextProvider>
+      <AuthContextProvider>
+        <ChakraProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ChakraProvider>
+      </AuthContextProvider>
+    </CartContextProvider>
+  </WishlistContextProdvider>
+  
+  
   
   
 );

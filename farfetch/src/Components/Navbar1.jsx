@@ -12,7 +12,9 @@ import {
     ModalBody,
     ModalCloseButton,useDisclosure
 } from '@chakra-ui/react'
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import ModalBodyTabs from "../Components/ModalBodyTabs"
+import { useContext } from 'react'
+import { AuthContext } from '../Context/AuthContext'
 
 export default function Navbar1() {
     const Navigator = useNavigate()
@@ -79,7 +81,7 @@ export default function Navbar1() {
                 </Flex> 
             </Flex>
             <Flex alignContent='center' p='4'>
-                <Flex hidden={loco.pathname=="/"?true:false} w='70%'>
+                <Flex hidden={(loco.pathname=="/men" ||loco.pathname=="/kids" || loco.pathname=="/women")?false:true} w='70%'>
                     <Text onMouseEnter={()=>displayer(changenewIn)}>New In</Text>
                     <Spacer />
                     <Text onMouseEnter={()=>displayer(changeshopby)}>Shop By</Text>
@@ -559,57 +561,7 @@ export default function Navbar1() {
                 <ModalHeader>Come on in</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody >
-                <Tabs>
-                    <TabList>
-                        <Tab>SIGN IN</Tab>
-                        <Tab>I'M NEW HERE</Tab>
-                    </TabList>
-                    <TabPanels>
-                        <TabPanel>
-                        <Stack overflowY='scroll'>
-                            <label htmlFor="">
-                                Email Address
-                                <Input></Input>
-                            </label>
-                            <label htmlFor="">
-                                Password
-                                <Input></Input>
-                            </label>
-                            <Checkbox>Keep me signed in?</Checkbox>
-                            <Text>Forgot your password?</Text>
-                            <Button color='white' bgColor='#222222'>Sign in</Button>
-                            <Text textAlign='center'>or</Text>
-                            <Button variant='outline' leftIcon={<AiFillGoogleCircle/>}>Sign in with Google</Button>
-                            <Button variant='outline' leftIcon={<AiFillApple />}>Sign in with Apple</Button>
-                            <Button variant='outline' leftIcon={<AiFillFacebook/>}>Sign in with Facebook</Button>
-                        </Stack>
-                        </TabPanel>
-                        <TabPanel>
-                        <Stack overflowY='scroll'>
-                            <label htmlFor="">
-                                Name
-                                <Input></Input>
-                            </label>
-                            <label htmlFor="">
-                                Email Address
-                                <Input></Input>
-                            </label>
-                            <label htmlFor="">
-                                Password
-                                <Input></Input>
-                            </label>
-                            <Text>By registering, you agree with our Terms & <br /> Conditions and Privacy and Cookie Policy.</Text>
-
-                            <Checkbox>Sign up for early Sale access plus tailored new arrivals, trends and promotions. Find out more. To opt out, click unsubscribe in our emails.</Checkbox>
-                            <Button color='white' bgColor='#222222'>Register</Button>
-                            <Text textAlign='center'>or</Text>
-                            <Button variant='outline' leftIcon={<AiFillGoogleCircle/>}>Sign in with Google</Button>
-                            <Button variant='outline' leftIcon={<AiFillApple />}>Sign in with Apple</Button>
-                            <Button variant='outline' leftIcon={<AiFillFacebook/>}>Sign in with Facebook</Button>
-                        </Stack>
-                        </TabPanel>
-                    </TabPanels>
-                </Tabs>
+                <ModalBodyTabs closer={onClose} />
                 </ModalBody>
                 </ModalContent>
             </Modal>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
-import {Text, Flex, Spacer, Stack, Button} from '@chakra-ui/react'
+import {Text, Flex,Grid, GridItem, Spacer, Stack, Button} from '@chakra-ui/react'
 import ProductViewer1 from './ProductViewer1'
 
 export default function Recommendations({genderr}) {
@@ -21,15 +21,13 @@ export default function Recommendations({genderr}) {
 
     return(
         <>
-            <Stack w='95%' m='auto' mt='25px'>
-                <Flex>
+            <Flex w='95%' m='auto' mb='10px'>
                     <Text fontSize='25px'>Recommendations</Text>
                     <Spacer></Spacer>
                     <Button variant='outline'>Shop Now</Button>
-                </Flex>
-                <Flex style={{overflowX:'scroll'}}>
-                    {data.map((ele)=><ProductViewer1 id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail} brand={ele.category} gender={genderr} ></ProductViewer1>)}
-                </Flex>
+            </Flex>
+            <Stack direction='row' overflowX='auto' w='95%' m='auto' mb='70px'>
+                {data.map((ele)=><GridItem><ProductViewer1 id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail} brand={ele.category} gender={genderr} ></ProductViewer1></GridItem>)}
             </Stack>
         </>
     )
