@@ -18,7 +18,7 @@ import {
     AccordionPanel,
     AccordionIcon,
     Checkbox,
-    VStack,
+    VStack,Spinner,
     Select
 } from '@chakra-ui/react'
 import '../Routes/Home.css'
@@ -169,6 +169,7 @@ export default function Clothing() {
                 </Box>
                 <Spacer></Spacer>
                 <SimpleGrid  w='75%'columns='3' gap='105px'>
+                    {data.length==0 ?   <Spinner size='xl' />:null}
                     {data.map((ele)=><ProductViewer title={ele.title} id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail} brand={ele.category} gender={params.person}></ProductViewer>)}
                 </SimpleGrid>
             </Flex>

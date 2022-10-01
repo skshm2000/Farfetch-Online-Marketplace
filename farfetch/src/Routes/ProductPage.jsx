@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {Flex, Heading} from '@chakra-ui/react' 
 import {AiOutlineHeart} from 'react-icons/ai'
 import {
@@ -22,10 +22,20 @@ import {ChevronRightIcon} from '@chakra-ui/icons'
 import Recommendations from '../Components/Recommendations'
 import SignUpForm from '../Components/SignUpForm'
 import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
+import { useContext } from "react"; 
+import { WishlistContext } from "../Context/WishlistContext";
+import { useToast } from '@chakra-ui/react'
+import { CartContext } from "../Context/CartContext";
+import { AuthContext } from "../Context/AuthContext";
 
 export default function ProductPage() {
     const params = useParams()
     const [dispData, changeDisp] = useState([])
+    const Wishlist = useContext(WishlistContext)
+    const toast = useToast()
+    const Auth = useContext(AuthContext)
+    const Cart = useContext(CartContext)
+    const size = useRef(null)
 
     function dataGetter() {
         let url = 'https://farfetch-backend.herokuapp.com/products'
@@ -35,6 +45,81 @@ export default function ProductPage() {
         axios.get(url).then(res=>{
             let x = res.data.filter((ele)=>ele._id==params.id)
             changeDisp(x)
+        })
+    }
+
+    function addToWishlist() {
+        if(Auth.isAuth==false) {
+            toast({
+                position: 'bottom-left',
+                render: () => (
+                    <Box color='white' p={3} bgColor='#222222' borderRadius='8px'>
+                    You need to login first!
+                    </Box>
+                ),
+            })
+            return 
+        }
+        let arr = [...Wishlist.wishlistItems]
+        for(let i=0; i<arr.length; i++) {
+            if(arr[i]._id==dispData[0]._id){
+                toast({
+                    position: 'bottom-left',
+                    render: () => (
+                      <Box color='white' p={3} bgColor='#222222' borderRadius='8px'>
+                        Item already in wishlist
+                      </Box>
+                    ),
+                })
+                return 
+            }
+        }
+        arr = [...Wishlist.wishlistItems,...dispData]
+        Wishlist.changeWishlistItems(arr)
+        toast({
+            position: 'bottom-left',
+            render: () => (
+              <Box color='white' p={3} bgColor='#222222' borderRadius='8px'>
+                Added to wishlist
+              </Box>
+            ),
+          })
+    }
+
+    function addToCart() {
+        if(Auth.isAuth==false) {
+            toast({
+                position: 'bottom-left',
+                render: () => (
+                    <Box color='white' p={3} bgColor='red' borderRadius='8px'>
+                    You need to login first!
+                    </Box>
+                ),
+            })
+            return 
+        }
+        if(size.current.value=="") {
+            toast({
+                position: 'bottom-left',
+                render: () => (
+                    <Box color='white' p={3} bgColor='red' borderRadius='8px'>
+                    Please select your size
+                    </Box>
+                ),
+            })
+            return 
+        }
+        let obj = dispData[0]
+        obj.size=size.current.value
+        let arr =[...Cart.cartItems, obj]
+        Cart.changeCartItems(arr)
+        toast({
+            position: 'bottom-left',
+            render: () => (
+                <Box color='white' p={3} bgColor='#222222' borderRadius='8px'>
+                Item added to cart
+                </Box>
+            ),
         })
     }
 
@@ -70,15 +155,15 @@ export default function ProductPage() {
                         <Text textAlign='left'>Import Duties Included</Text> 
                     </Stack>
                     <Stack>
-                        <Select w='100%' variant='Unstyled' placeholder='Select Size'>
+                        <Select w='100%' ref={size} variant='Unstyled' placeholder='Select Size'>
                             <option value="S">S</option>
                             <option value="M">M</option>
                             <option value="L">L</option>
                         </Select>
                         <Flex>
-                            <Button w='70%' color='white' bgColor='#222222' colorScheme='gray'>Add to Bag</Button>
+                            <Button w='70%' color='white' bgColor='#222222' onClick={addToCart} colorScheme='gray'>Add to Bag</Button>
                             <Spacer></Spacer>
-                            <Button w='28%' variant='outline' rightIcon={<AiOutlineHeart/>}>Wishlist</Button>
+                            <Button w='28%' variant='outline' onClick={addToWishlist} rightIcon={<AiOutlineHeart/>}>Wishlist</Button>
                         </Flex>
                         <Text textAlign='left'>ESTIMATED DELIVERY<br />Oct 3 - Oct 10</Text>
                     </Stack>

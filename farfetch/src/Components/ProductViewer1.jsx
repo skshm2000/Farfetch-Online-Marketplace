@@ -11,8 +11,8 @@ export default function ProductViewer1({id, price, image, details, brand, gender
 
     return(
         <>
-            <Stack style={{width:'2000px',border:'1px solid gray', borderRadius:'10px'}} onClick={takeUsTo}>
-                <Image w='100px' src={image}></Image>
+            <Stack style={{width:'200px',border:'1px solid gray', borderRadius:'10px', height:'380px', padding:'10px'}} onClick={takeUsTo}>
+                <Image src={image}></Image>
                 <Text textAlign='left'><b>{brand}</b><br />{details}</Text>
                 <Text textAlign='left'>{`$${price}`}</Text>
             </Stack>
