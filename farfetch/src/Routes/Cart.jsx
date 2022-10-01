@@ -16,6 +16,7 @@ import ModalBodyTabs from "../Components/ModalBodyTabs"
 import { useNavigate } from "react-router-dom"
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { CartContext } from "../Context/CartContext"
+import CartItems from "../Components/CartItems"
 
 export default function Cart() {
     let checkAuth = useContext(AuthContext)
@@ -26,7 +27,6 @@ export default function Cart() {
     useEffect(()=>{
         window.scrollTo({top:'0'})
     }, [])
-
 
     if(checkAuth.isAuth==false) {
         return (
@@ -78,9 +78,9 @@ export default function Cart() {
     return (
         <>
             <Stack>
-                <Heading fontFamily='farfetch'>SHOPPING BAG</Heading>
-                <Flex w='95%' alignSelf='center'>
-                    <Stack alignItems='center' w='70%' spacing='10px'>
+                <Heading mb='30px' fontFamily='farfetch'>SHOPPING BAG</Heading>
+                <Flex  w='95%' alignSelf='center'>
+                    <Stack alignItems='left' w='77%' spacing='10px'>
                         <Flex>
                             <Text>Sending from <b>United States</b></Text>
                             <Spacer></Spacer>
@@ -90,8 +90,41 @@ export default function Cart() {
                             <AiOutlineInfoCircle />
                         </Flex>
                         <Divider orientation='horizontal' />
+                        <Stack spacing='20px'>
+                            {bag.cartItems.map(ele=><CartItems detail={ele.detail} title={ele.title} size={ele.size} category={ele.category} price={ele.price} id={ele._id} image={ele.img_url}></CartItems>)}
+                        </Stack>
+                    </Stack>
+                    <Spacer></Spacer>
+                    <Stack w='21%' spacing='25px' mt='20px'>
+                        <Text textAlign='left' fontSize='18px' fontWeight='bold'>Summary</Text>
+                        <Box>
+                            <Flex>
+                            <Text>Subtotal</Text>
+                            <Spacer></Spacer>
+                            <Text>${bag.cartItems.reduce((acc,ele)=>acc+ele.price,0)}</Text>
+                            </Flex>
+                            <Flex>
+                                <Text>Delivery</Text>
+                                <Spacer></Spacer>
+                                <Text>$24</Text>
+                            </Flex>
+                        </Box>
+                        <Divider mt='20px' mb='20px' orientation='horizontal' />
+                        <Flex>
+                            <Text>Total</Text>
+                            <Spacer></Spacer>
+                            <Stack textAlign='right'>
+                                <Text>USD$ {bag.cartItems.reduce((acc,ele)=>acc+ele.price,0) + 24}<br/>Import duties included</Text> 
+                            </Stack>
+                        </Flex>
+                        <Button bgColor='#222222' color='white'>Go to checkout ></Button>
                     </Stack>
                 </Flex>
+
+                <Box>
+                    <SignUpForm />
+                </Box>
+                
             </Stack>
         </>
     )

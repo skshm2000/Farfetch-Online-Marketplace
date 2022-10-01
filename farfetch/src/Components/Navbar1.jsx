@@ -12,8 +12,9 @@ import {
     ModalBody,
     ModalCloseButton,useDisclosure
 } from '@chakra-ui/react'
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import ModalBodyTabs from "../Components/ModalBodyTabs"
+import { useContext } from 'react'
+import { AuthContext } from '../Context/AuthContext'
 
 export default function Navbar1() {
     const Navigator = useNavigate()
