@@ -1,4 +1,4 @@
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Stack, Input,Checkbox,Text,Button } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Stack, Input,Checkbox,Text,Button, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { AiFillGoogleCircle, AiFillApple, AiFillFacebook} from 'react-icons/ai'
 import {useEffect, useRef, useState, useContext} from 'react'
 import axios from 'axios'
@@ -17,6 +17,8 @@ export default function ModalBodyTabs({closer}) {
     const [registerButton, changeRegisterLoad] = useState(false)
     const [emailErr, changeEmailErr] = useState(false)
     const [passErr, changePassErr] = useState(false)
+    const [show, setShow] = useState(false)
+    const handleClick = () => setShow(!show)
 
     function newRegister() {
         changeRegisterLoad(true)
@@ -32,7 +34,7 @@ export default function ModalBodyTabs({closer}) {
             changeRegisterLoad(false)
             return
         }
-        axios.post('http://localhost:8080/profile',{
+        axios.post('https://saksham-farfetch-api.herokuapp.com/profile',{
             "id":Math.random(),
             "name":newName.current.value,
             "email":newEmail.current.value,
@@ -50,7 +52,7 @@ export default function ModalBodyTabs({closer}) {
     async function loginer() {
         changePassErr(false)
         changeEmailErr(false)
-        let user = await axios.get(`http://localhost:8080/profile?email=${loginEmail.current.value}`).then(res=>res.data)
+        let user = await axios.get(`https://saksham-farfetch-api.herokuapp.com/profile?email=${loginEmail.current.value}`).then(res=>res.data)
         if(user.length==0) {
             changeEmailErr(true)
             return
@@ -64,7 +66,7 @@ export default function ModalBodyTabs({closer}) {
     }   
 
     function dataGetter() {
-        axios.get('http://localhost:8080/profile').then(res=>changeUsers(res.data))
+        axios.get('https://saksham-farfetch-api.herokuapp.com/profile').then(res=>changeUsers(res.data))
     }
 
     useEffect(()=>{
@@ -88,7 +90,18 @@ export default function ModalBodyTabs({closer}) {
                     </label>
                     <label htmlFor="">
                         Password
-                        <Input isInvalid={passErr}  ref={loginPass}></Input>
+                        <InputGroup size='md'>
+                            <Input
+                                isInvalid={passErr}  ref={loginPass}
+                                pr='4.5rem'
+                                type={show ? 'text' : 'password'}
+                            />
+                            <InputRightElement width='4.5rem'>
+                                <Button h='1.75rem' size='sm' onClick={handleClick}>
+                                {show ? 'Hide' : 'Show'}
+                                </Button>
+                            </InputRightElement>
+                        </InputGroup>
                         {passErr ? <Text color='red'>Password do not match</Text>:null}
                     </label>
                     <Checkbox>Keep me signed in?</Checkbox>
@@ -113,7 +126,18 @@ export default function ModalBodyTabs({closer}) {
                     </label>
                     <label htmlFor="">
                         Password
-                        <Input isInvalid={newPassErr} ref={newPass}></Input>
+                        <InputGroup size='md'>
+                            <Input
+                                isInvalid={newPassErr} ref={newPass}
+                                pr='4.5rem'
+                                type={show ? 'text' : 'password'}
+                            />
+                            <InputRightElement width='4.5rem'>
+                                <Button h='1.75rem' size='sm' onClick={handleClick}>
+                                {show ? 'Hide' : 'Show'}
+                                </Button>
+                            </InputRightElement>
+                        </InputGroup>
                         {newPassErr?<Text color='red'>Password should be minmum 8 characters</Text>:null}
                     </label>
                     <Text>By registering, you agree with our Terms & <br /> Conditions and Privacy and Cookie Policy.</Text>
