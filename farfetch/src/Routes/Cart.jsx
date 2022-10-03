@@ -117,7 +117,7 @@ export default function Cart() {
                                 <Text>USD$ {bag.cartItems.reduce((acc,ele)=>acc+ele.price,0) + 24}<br/>Import duties included</Text> 
                             </Stack>
                         </Flex>
-                        <Button bgColor='#222222' color='white'>Go to checkout ></Button>
+                        <Button bgColor='#222222' color='white'>Go to checkout > </Button>
                     </Stack>
                 </Flex>
 

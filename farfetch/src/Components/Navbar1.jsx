@@ -13,8 +13,6 @@ import {
     ModalCloseButton,useDisclosure
 } from '@chakra-ui/react'
 import ModalBodyTabs from "../Components/ModalBodyTabs"
-import { useContext } from 'react'
-import { AuthContext } from '../Context/AuthContext'
 
 export default function Navbar1() {
     const Navigator = useNavigate()
@@ -75,7 +73,7 @@ export default function Navbar1() {
                 <Image onClick={takeHome} w='210px' h='30px' src="https://www.farfetch.com/static/images/logo.png" alt='Main Logo'/>
                 <Spacer />
                 <Flex>
-                    <Button variant='ghost' onClick={onOpen}><AiOutlineUser size='30px'/></Button>
+                    <Button variant='ghost' onClick={onOpen}><AiOutlineUser size='30px'/> </Button>
                     <Button variant='ghost' onClick={()=>Navigator('/wishlist')}><AiOutlineHeart  size='30px' /></Button>
                     <Button variant='ghost' onClick={()=>Navigator('/cart')}><AiOutlineShoppingCart  size='30px' /></Button>
                 </Flex> 

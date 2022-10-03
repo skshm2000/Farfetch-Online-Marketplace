@@ -49,6 +49,12 @@
       "name": "Akshay",
       "email": "Akshay@gmail.com",
       "password": "12345678"
+    },
+    {
+      "id": 0.16073216069037666,
+      "name": "Putin",
+      "email": "putin@gmail.com",
+      "password": "12345678"
     }
   ]
 }
