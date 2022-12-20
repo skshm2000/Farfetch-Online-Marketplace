@@ -25,7 +25,7 @@ Created a functional website which mocks the working of any common e-commerce we
 <li>CSS</li>
 </ul>
 
-## Installation Requirenments
+## Installation Requirements
 <ol>
 <li>Fork the repo, then clone it</li>
 <li>install all dependencies, with 'npm install'</li>
@@ -52,4 +52,4 @@ Created a functional website which mocks the working of any common e-commerce we
 
 ## Developers
 
- - **[Saksham Shelwal](https://github.com/skshm2000)**
+ - **[Saksham Selwal](https://github.com/skshm2000)**
