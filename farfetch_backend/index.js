@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const women = [
     {
      "img_url": "https:\/\/cdn-images.farfetch-contents.com\/19\/13\/93\/61\/19139361_43410872_480.jpg",
@@ -1024,6 +1025,8 @@ const kids = [
     }
    ]
 const app = express()
+app.use(express.json())
+app.use(cors())
 
 app.get('/men', async (req, res)=>{
     res.status(200).send(men)
