@@ -1,4 +1,4 @@
-# Farfetch -  **[Deployed Link](https://the-great-skshm2000-site.netlify.app/)**
+# Farfetch -  **[Deployed Link](https://farfetch-lac.vercel.app/)**
 Farfetch is an online market place that provides products from luxury brands, delivered straight to your house. You can choose from a wide variety of products for Men, Women and Kids.
 
 
