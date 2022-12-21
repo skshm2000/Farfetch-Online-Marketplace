@@ -38,12 +38,10 @@ export default function ProductPage() {
     const size = useRef(null)
 
     function dataGetter() {
-        let url = 'https://farfetch-backend.herokuapp.com/products'
-        if(params.person=='women'){
-            url = 'https://farfetch-backend.herokuapp.com/products2'
-        }
-        axios.get(url).then(res=>{
-            let x = res.data.filter((ele)=>ele._id==params.id)
+        let url = 'https://farfetchbackend.onrender.com'
+
+        axios.get(`${url}/${params.person}`).then(res=>{
+            let x = res.data.filter((ele)=>ele.title==params.id)
             changeDisp(x)
         })
     }
@@ -151,7 +149,7 @@ export default function ProductPage() {
                     <Stack spacing='12'>
                         {dispData.length!=0?<Text fontSize='16px' textAlign='left'>{dispData[0].title} <br /> <Heading mb='-20px'>{dispData[0].category}</Heading><br />{dispData[0].detail}</Text>:<Skeleton height='100%'/>}
                     <Stack>
-                        {dispData[0]?<Text fontSize='30px' textAlign='left'><b>{`$${dispData[0]?.price}`}</b></Text>:<Skeleton height='100%' />}
+                        {dispData[0]?<Text fontSize='30px' textAlign='left'><b>{`${dispData[0]?.price}`}</b></Text>:<Skeleton height='100%' />}
                         <Text textAlign='left'>Import Duties Included</Text> 
                     </Stack>
                     <Stack>

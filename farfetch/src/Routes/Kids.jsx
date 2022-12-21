@@ -4,13 +4,15 @@ import ProductViewer from '../Components/ProductViewer'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import SignUpForm from '../Components/SignUpForm'
+import { useNavigate } from 'react-router-dom'
 
 export default function Men() {
     const [disp1, changeDisp1] = useState([])
     const [disp2, changeDisp2] = useState([])
+    const nav = useNavigate()
 
     function dataGetter() {
-        axios.get('https://farfetch-backend.herokuapp.com/products').then(res=>{
+        axios.get('https://farfetchbackend.onrender.com/kids').then(res=>{
             let data = res.data
             changeDisp1(data.splice(10, 3))
             changeDisp2(data.splice(15, 4))
@@ -29,7 +31,9 @@ export default function Men() {
                         FALL'S BEST <br /> OUTERWEAR
                     </Heading>
                     <Text mb='25px' fontSize='20px'>Layer up in the new season's best styles from Stand <br />Studio, Amiri and more</Text>
-                    <Button variant='outline'>Shop Now</Button>
+                    <Button variant='outline' onClick={()=>{
+                        nav('/kids/clothing')
+                    }}>Shop Now</Button>
                 </Box>
                 <Spacer></Spacer>
                 <Box>
@@ -64,7 +68,9 @@ export default function Men() {
                 <Flex>
                     <Text fontSize='22px'>Trending now: 150 most-wanted pieces</Text>
                     <Spacer></Spacer>
-                    <Button variant='outline'>Shop Now</Button>
+                    <Button variant='outline'onClick={()=>{
+                        nav('/kids/clothing')
+                    }}>Shop Now</Button>
                 </Flex>
                 <HStack spacing='25px'>
                     {disp2.map((ele)=><ProductViewer gender="kids" brand={ele.category} key={ele._id} title={ele.title} id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail}></ProductViewer>)}

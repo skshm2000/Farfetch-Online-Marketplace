@@ -1,11 +1,9 @@
 import {Text, SimpleGrid,Box, Image, Heading,Flex,Accordion, Stack,
     AccordionItem,Input,
-    AccordionButton,InputGroup, InputLeftAddon,
+    AccordionButton,
     AccordionPanel,
-    AccordionIcon,Button,
-    Spacer,Radio, RadioGroup, Checkbox} from '@chakra-ui/react'
-import { TbHanger } from "react-icons/tb";
-import { RiQuestionLine, RiChat2Line } from "react-icons/ri";
+    AccordionIcon,
+    Spacer} from '@chakra-ui/react'
 import './Home.css'
 import { useNavigate } from 'react-router-dom';
 import SignUpForm from '../Components/SignUpForm';

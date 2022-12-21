@@ -4,13 +4,15 @@ import ProductViewer from '../Components/ProductViewer'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import SignUpForm from '../Components/SignUpForm'
+import { useNavigate } from 'react-router-dom'
 
 export default function Women() {
     const [disp1, changeDisp1] = useState([])
     const [disp2, changeDisp2] = useState([])
+    const nav = useNavigate()
 
     function dataGetter() {
-        axios.get('https://farfetch-backend.herokuapp.com/products2').then(res=>{
+        axios.get('https://farfetchbackend.onrender.com/women').then(res=>{
             let data = res.data
             changeDisp1(data.splice(0, 4))
             changeDisp2(data.splice(4, 4))
@@ -45,7 +47,9 @@ export default function Women() {
                 <Flex>
                     <Text fontSize='22px'>New in: hand-picked daily from the world’s best brands and boutiques</Text>
                     <Spacer></Spacer>
-                    <Button variant='outline'>Shop Now</Button>
+                    <Button variant='outline'onClick={()=>{
+                        nav('/women/clothing')
+                    }}>Shop Now</Button>
                 </Flex>
                 <HStack spacing='25px'>
                     {disp1.map((ele)=><ProductViewer gender="women" brand={ele.category} key={ele._id} title={ele.title} id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail}></ProductViewer>)}
@@ -77,7 +81,9 @@ export default function Women() {
                 <Flex>
                     <Text fontSize='22px'>Trending now: transitional jackets</Text>
                     <Spacer></Spacer>
-                    <Button variant='outline'>Shop Now</Button>
+                    <Button variant='outline'onClick={()=>{
+                        nav('/women/clothing')
+                    }}>Shop Now</Button>
                 </Flex>
                 <HStack spacing='25px'>
                     {disp2.map((ele)=><ProductViewer gender="women" brand={ele.category} key={ele._id} title={ele.title} id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail}></ProductViewer>)}

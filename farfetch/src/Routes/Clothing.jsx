@@ -37,12 +37,8 @@ export default function Clothing() {
     const sortbyPrice = useRef(null)
 
     function dataGetter() {
-        let url = 'https://farfetch-backend.herokuapp.com/products'
-        if(params.person=='women') {
-            url = 'https://farfetch-backend.herokuapp.com/products2'
-        }
-
-        axios.get(url).then(res=>{
+        const url = 'https://farfetchbackend.onrender.com'
+        axios.get(`${url}/${params.person}`).then(res=>{
             mainData = res.data
             changeData(res.data)
             brandsSort(res.data)
@@ -55,13 +51,13 @@ export default function Clothing() {
         for(let i=0; i<x.length; i++) {
             let stat = false
             for(let j=0; j<arr.length; j++) {
-                if(x[i].category==arr[j]) {
+                if(x[i].brand==arr[j]) {
                     stat = true
                     break
                 }
             }
             if(stat==false) {
-                arr.push(x[i].category)
+                arr.push(x[i].brand)
             }
         }
         changeBrands(arr)
@@ -91,10 +87,9 @@ export default function Clothing() {
         }
         dat = dat.filter((ele)=>{
             for(let i=0; i<arr.length; i++) {
-                if(ele.category==arr[i]) {
-                    return (ele.category==arr[i])
+                if(ele.brand==arr[i]) {
+                    return (ele.brand==arr[i])
                 }
-                
             }
         })
         changeData(dat)
@@ -104,9 +99,37 @@ export default function Clothing() {
     function sorter(x) {
         let arr = new Array(...data)
         if(x=='l2h'){
-            arr.sort((a,b)=>a.price - b.price)
+            arr.sort((a,b)=>{
+                let aPrice = ''
+                for(let i=0; i<a.price.length; i++){
+                    if('0123456789'.includes(a.price[i])){
+                        aPrice += a.price[i]
+                    }
+                }
+                let bPrice = ''
+                for(let i=0; i<b.price.length; i++){
+                    if('0123456789'.includes(b.price[i])){
+                        bPrice += b.price[i]
+                    }
+                }
+                return +aPrice - +bPrice
+            })
         } else if(x=='h2l') {
-            arr.sort((a,b)=>b.price - a.price)
+            arr.sort((a,b)=>{
+                let aPrice = ''
+                for(let i=0; i<a.price.length; i++){
+                    if('0123456789'.includes(a.price[i])){
+                        aPrice += a.price[i]
+                    }
+                }
+                let bPrice = ''
+                for(let i=0; i<b.price.length; i++){
+                    if('0123456789'.includes(b.price[i])){
+                        bPrice += b.price[i]
+                    }
+                }
+                return +bPrice - +aPrice
+            })
         }
         changeData(arr)
     }
@@ -170,7 +193,7 @@ export default function Clothing() {
                 <Spacer></Spacer>
                 <SimpleGrid  w='75%'columns='3' gap='105px'>
                     {data.length==0 ?   <Spinner size='xl' />:null}
-                    {data.map((ele)=><ProductViewer title={ele.title} id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail} brand={ele.category} gender={params.person}></ProductViewer>)}
+                    {data.map((ele)=><ProductViewer title={ele.title} id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail} brand={ele.brand} gender={params.person}></ProductViewer>)}
                 </SimpleGrid>
             </Flex>
             <SignUpForm need='no'/>
