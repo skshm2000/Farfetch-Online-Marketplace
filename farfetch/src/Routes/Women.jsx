@@ -1,4 +1,4 @@
-import {Flex, Spacer,HStack, Box, Heading,Stack, Text, Button, Image} from '@chakra-ui/react'
+import {Flex, Spacer,HStack, Box, Heading,Stack, Text, Button, Image, SimpleGrid} from '@chakra-ui/react'
 import './Women.css'
 import ProductViewer from '../Components/ProductViewer'
 import axios from 'axios'
@@ -25,20 +25,40 @@ export default function Women() {
 
     return (
         <>
-            <Flex m='auto' w='95%' mb='100px'>
-                <Box id='box1' pt='180px'>
+            <Stack m='auto' w='95%' mb='100px' direction={{
+                            base:'column-reverse',
+                            sm: 'column-reverse',
+                            md: 'row',
+                            lg: 'row',
+                            xl: 'row',
+                            '2xl': 'row',
+                          }}>
+                <Box id='box1' pt='180px' w={{
+                            base:'90%',
+                            sm: '90%',
+                            md: '60%',
+                            lg: '60%',
+                            xl: '50%',
+                            '2xl': '50%',
+                          }}> 
                     <Heading mb='25px' fontSize='45px' fontFamily='farfetch'>
                         WHAT TO WEAR <br /> NOW: MEET FALL'S <br /> NEW HEROS
                     </Heading>
                     <Text mb='25px' fontSize='20px'>From modern prep to grown-up glamous, the new season's <br /> most iconic looks have arrived. Explore the highlights for <br /> every style here</Text>
                     <Button variant='outline'>Explore More</Button>
                 </Box>
-                <Spacer></Spacer>
                 <Box>
                     <Image src='https://cdn-static.farfetch-contents.com/cms-cm10/caas/v1/media/3938370/data/df9f215cae9a4e5b8bed7f86e3ee7fb6/1x1_messaging-side/637/data.jpeg'></Image>
                 </Box>
-            </Flex>
-            <Stack ml='2.5%' w='45%' mb='80px'>
+            </Stack>
+            <Stack ml='2.5%' w={{
+                            base:'75%',
+                            sm: '75%',
+                            md: '60%',
+                            lg: '60%',
+                            xl: '50%',
+                            '2xl': '50%',
+                          }} mb='80px'>
                 <Image src='https://cdn-static.farfetch-contents.com/cms-cm10/caas/v1/media/3952344/data/f51e81c378fec49e786766b48cd09a3c/1x1_two-columns/637/data.jpeg'></Image>
                 <Text textAlign='left'>DIESEL'S NEW ERA OF DENIM</Text>
                 <Text textAlign='left'>Creative director Glenn Martens pushes the boundaries of fashion’s favorite <br /> fabric with his latest collection</Text>
@@ -51,9 +71,16 @@ export default function Women() {
                         nav('/women/clothing')
                     }}>Shop Now</Button>
                 </Flex>
-                <HStack spacing='25px'>
+                <SimpleGrid columns={{
+                            base:'1',
+                            sm: '2',
+                            md: '2',
+                            lg: '4',
+                            xl: '4',
+                            '2xl': '4',
+                          }} gap='25px'>
                     {disp1.map((ele)=><ProductViewer gender="women" brand={ele.category} key={ele._id} title={ele.title} id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail}></ProductViewer>)}
-                </HStack>
+                </SimpleGrid>
             </Stack>
             <Stack spacing='50px' w='95%' m='auto'>
                 <Text fontSize='30px'>This Week's Highlights</Text>
@@ -85,9 +112,16 @@ export default function Women() {
                         nav('/women/clothing')
                     }}>Shop Now</Button>
                 </Flex>
-                <HStack spacing='25px'>
+                <SimpleGrid columns={{
+                            base:'1',
+                            sm: '2',
+                            md: '2',
+                            lg: '4',
+                            xl: '4',
+                            '2xl': '4',
+                          }} spacing='25px'>
                     {disp2.map((ele)=><ProductViewer gender="women" brand={ele.category} key={ele._id} title={ele.title} id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail}></ProductViewer>)}
-                </HStack>
+                </SimpleGrid>
             </Stack>
             <SignUpForm />
         </>

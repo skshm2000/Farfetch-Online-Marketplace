@@ -136,10 +136,40 @@ export default function ProductPage() {
             <Grid
             w='95%'
             m='auto'
-            templateAreas={`"one two five"
-                            "three four five"`}
-            gridTemplateColumns={'1fr 1fr 1fr '}
-            gridTemplateRows={'400px 400px'}
+            templateAreas={{
+                    base:`"one"
+                    "five"
+                    "five"`,
+                    sm: `"one"
+                    "five"
+                    "five"`,
+                    md: `"one two"
+                    "five five"
+                    "five five"`,
+                    lg: `"one two"
+                    "five five"
+                    "five five"`,
+                    xl: `"one two five"
+                    "three four five"`,
+                    '2xl': `"one two five"
+                    "three four five"`,
+                }}
+            gridTemplateColumns = {{
+                base:'1fr',
+                sm: '1fr',
+                md: '1fr 1fr',
+                lg: '1fr 1fr',
+                xl: '1fr 1fr 1fr',
+                '2xl': '1fr 1fr 1fr',
+              }}
+            gridTemplateRows={{
+                base:'400px 400px',
+                sm: '400px 400px',
+                md: '400px 400px',
+                lg: '400px 400px',
+                xl: '400px 400px',
+                '2xl': '400px 400px',
+              }}
             gap='5'>
                 <GridItem area={'one'}>{dispData[0]?<Image boxSize='100%' src={dispData[0].img_url}></Image>:<Skeleton height='100%' />}</GridItem>
                 <GridItem area={'two'}>{dispData[0]?<Image boxSize='100%' src={dispData[0].img_url}></Image>:<Skeleton height='100%' />}</GridItem>

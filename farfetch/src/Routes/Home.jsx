@@ -14,13 +14,34 @@ export default function Home() {
     return (
         <>
             <Text className='deptText'>Choose a department</Text>
-            <SimpleGrid columns='3' row='1' gap='5' w='95%' m='auto' mb='100px'>
+            <SimpleGrid 
+            columns={{
+                base:'1',
+                sm: '1',
+                md: '3',
+                lg: '3',
+                xl: '3',
+                '2xl': '3',
+              }} 
+            gap='5' 
+            w='90%' 
+            m='auto' 
+            mb='100px'>
                 <div onClick={()=>Navigator('/women')} className="mainDiv">
                     <div className="bgImage">
                         <Image src='https://cdn-static.farfetch-contents.com/cms-cm10/caas/v1/media/1358584/data/35f063c3600dc83729be3af4597b6349/16x9_three-columns/480/data.png'/>
                     </div>
-                    <div className="fgText1">
-                        <Heading fontFamily='farfetch'>SHOP WOMEN</Heading>
+                    <div className="fgText">
+                        <Heading fontFamily='farfetch'
+                        fontSize={{
+                            base:'25px',
+                            sm: '25px',
+                            md: '25px',
+                            lg: '25px',
+                            xl: '30px',
+                            '2xl': '30px',
+                          }}
+                        >SHOP WOMEN</Heading>
                     </div>
                 </div>
                 <div onClick={()=>Navigator('/men')} className="mainDiv">
@@ -28,7 +49,16 @@ export default function Home() {
                         <Image src='https://cdn-static.farfetch-contents.com/cms-cm10/caas/v1/media/1358582/data/db104369ad2687b797128ca8a9fa8fbf/16x9_three-columns/480/data.png'/>
                     </div>
                     <div className="fgText">
-                        <Heading fontFamily='farfetch'>SHOP MEN</Heading>
+                        <Heading 
+                        fontSize={{
+                            base:'25px',
+                            sm: '25px',
+                            md: '25px',
+                            lg: '25px',
+                            xl: '30px',
+                            '2xl': '30px',
+                          }}
+                        fontFamily='farfetch'>SHOP MEN</Heading>
                     </div>
                 </div>
                 <div onClick={()=>Navigator('/kids')} className="mainDiv">
@@ -36,7 +66,16 @@ export default function Home() {
                         <Image src='https://cdn-static.farfetch-contents.com/cms-cm10/caas/v1/media/3485568/data/56296828f1ebd020fd4f3eb3fdd3bff7/16x9_three-columns/480/data.png'/>
                     </div>
                     <div className="fgText">
-                        <Heading fontFamily='farfetch'>KIDSWEAR</Heading>
+                        <Heading 
+                        fontSize={{
+                            base:'25px',
+                            sm: '25px',
+                            md: '25px',
+                            lg: '25px',
+                            xl: '30px',
+                            '2xl': '30px',
+                          }}
+                        fontFamily='farfetch'>KIDSWEAR</Heading>
                     </div>
                 </div>
             </SimpleGrid>

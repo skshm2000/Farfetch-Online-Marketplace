@@ -1,4 +1,4 @@
-import {Flex, Spacer,HStack, Box, Heading,Stack, Text, Button, Image} from '@chakra-ui/react'
+import {Flex, Spacer,HStack, Box, Heading,Stack, Text, Button, Image, SimpleGrid} from '@chakra-ui/react'
 import './Women.css'
 import ProductViewer from '../Components/ProductViewer'
 import axios from 'axios'
@@ -25,7 +25,14 @@ export default function Men() {
 
     return (
         <>
-            <Flex m='auto' w='95%' mb='100px'>
+            <Stack m='auto' w='95%' mb='100px' direction={{
+                            base:'column-reverse',
+                            sm: 'column-reverse',
+                            md: 'row',
+                            lg: 'row',
+                            xl: 'row',
+                            '2xl': 'row',
+                          }}>
                 <Box id='box1' pt='180px'>
                     <Heading mb='25px' fontSize='45px' fontFamily='farfetch'>
                         FALL'S BEST <br /> OUTERWEAR
@@ -39,12 +46,19 @@ export default function Men() {
                 <Box>
                     <Image src='https://cdn-static.farfetch-contents.com/cms-cm10/caas/v1/media/3965680/data/1493d066b69d04f7eb7f69b1ebf4d9fc/1x1_messaging-side/637/data.jpeg'></Image>
                 </Box>
-            </Flex>
+            </Stack>
             <Stack w='95%' spacing='50px' m='auto' mb='80px'>
                 <Text fontSize='30px'>The best of new in</Text>
-                <HStack spacing='25px'>
+                <SimpleGrid columns={{
+                            base:'1',
+                            sm: '2',
+                            md: '2',
+                            lg: '4',
+                            xl: '4',
+                            '2xl': '4',
+                          }} spacing='25px'>
                     {disp1.map((ele)=><ProductViewer gender="kids" brand={ele.category} key={ele._id} title={ele.title} id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail}></ProductViewer>)}
-                </HStack>
+                </SimpleGrid>
             </Stack>
             <Stack spacing='50px' w='95%' m='auto'>
                 <Text fontSize='30px'>This Week's Highlights</Text>
@@ -72,9 +86,16 @@ export default function Men() {
                         nav('/kids/clothing')
                     }}>Shop Now</Button>
                 </Flex>
-                <HStack spacing='25px'>
+                <SimpleGrid columns={{
+                            base:'1',
+                            sm: '2',
+                            md: '2',
+                            lg: '4',
+                            xl: '4',
+                            '2xl': '4',
+                          }} spacing='25px'>
                     {disp2.map((ele)=><ProductViewer gender="kids" brand={ele.category} key={ele._id} title={ele.title} id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail}></ProductViewer>)}
-                </HStack>
+                </SimpleGrid>
             </Stack>
             <Stack ml='2.5%' w='45%'>
                 <Image src='https://cdn-static.farfetch-contents.com/cms-cm10/caas/v1/media/3965740/data/6ee964c35a7d4526d278bf7089f2bebc/1x1_two-columns/637/data.jpeg'></Image>

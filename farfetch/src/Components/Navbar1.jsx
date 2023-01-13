@@ -70,7 +70,14 @@ export default function Navbar1() {
                     <Button variant='ghost'> <NavLink style={({isActive})=>isActive?activeStyle:null} to='/kids'>Kids</NavLink></Button>
                 </Flex>
                 <Spacer />
-                <Image onClick={takeHome} w='210px' h='30px' src="https://www.farfetch.com/static/images/logo.png" alt='Main Logo'/>
+                <Image onClick={takeHome} w={{
+                            base:'140px',
+                            sm: '140px',
+                            md: '170px',
+                            lg: '170px',
+                            xl: '210px',
+                            '2xl': '210px',
+                          }} h='30px' src="https://www.farfetch.com/static/images/logo.png" alt='Main Logo'/>
                 <Spacer />
                 <Flex>
                     <Button variant='ghost' onClick={onOpen}><AiOutlineUser size='30px'/> </Button>

@@ -6,6 +6,8 @@
 
 .mainDiv {
     position: relative;
+    justify-content: center;
+    align-items: center;
 }
 
 .mainDiv:hover {
@@ -14,15 +16,8 @@
 
 .fgText {
     position: absolute;
-    bottom: 40%;
+    bottom: 30%;
     left: 25%;
-    color: white;
-}
-
-.fgText1 {
-    position: absolute;
-    bottom: 40%;
-    left: 15%;
     color: white;
 }
 

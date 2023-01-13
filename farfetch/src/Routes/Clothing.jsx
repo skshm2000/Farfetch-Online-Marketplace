@@ -164,13 +164,20 @@ export default function Clothing() {
             <Flex w='95%' fontFamily='farfetch' pl='3.7%'> 
                 <Text >Filter</Text>
                 <Spacer></Spacer>
-                <Select w='20%' variant='Unstyled' ref={sortbyPrice} onChange={()=>sorter(sortbyPrice.current.value)} placeholder='Sort by price'>
+                <Select w={{
+                            base:'40%',
+                            sm: '40%',
+                            md: '28%',
+                            lg: '28%',
+                            xl: '22%',
+                            '2xl': '22%',
+                          }} variant='Unstyled' ref={sortbyPrice} onChange={()=>sorter(sortbyPrice.current.value)} placeholder='Sort by price'>
                     <option value="l2h">Low To High</option>
                     <option value="h2l">High to Low</option>
                 </Select>
             </Flex>
             
-            <Flex w='95%' m='auto'>
+            <Flex w='99%' m='auto'>
                 <Box fontFamily='farfetch' w='22%'>
                 <Accordion allowToggle>
                     <AccordionItem>
@@ -190,8 +197,14 @@ export default function Clothing() {
                     </AccordionItem>
                     </Accordion>
                 </Box>
-                <Spacer></Spacer>
-                <SimpleGrid  w='75%'columns='3' gap='105px'>
+                <SimpleGrid  w='75%'columns={{
+                            base:'1',
+                            sm: '2',
+                            md: '2',
+                            lg: '4',
+                            xl: '4',
+                            '2xl': '4',
+                          }} gap='105px'>
                     {data.length==0 ?   <Spinner size='xl' />:null}
                     {data.map((ele)=><ProductViewer title={ele.title} id={ele._id} price={ele.price} image={ele.img_url} details={ele.detail} brand={ele.brand} gender={params.person}></ProductViewer>)}
                 </SimpleGrid>

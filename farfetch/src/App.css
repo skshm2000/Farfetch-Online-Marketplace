@@ -3,6 +3,11 @@
   src: url('HelveticaNeue Light.ttf');
 }
 
+body, html {
+  margin: 0;
+  overflow-x: hidden;
+}
+
 
 .App {
   text-align: center;

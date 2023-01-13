@@ -20,7 +20,8 @@ export default function SignUpForm({need="yes"}) {
     }
     return (
         <>
-        {need=='yes'?<Flex w='95%' m='auto' mt='150'>
+        {need=='yes'?
+        <Flex w='95%' m='auto' mt='150'>
                 <Stack className='container1'>
                     <TbHanger size='30px'/>
                     <Text>HOW TO SHOP</Text>
@@ -40,7 +41,14 @@ export default function SignUpForm({need="yes"}) {
                 </Stack>
         </Flex>:null}       
 
-        <Stack w='32%' m='auto' pt='150px' pb='50px' pr='20px' pl='20px'>
+        <Stack w={{
+            base:'75%',
+            sm: '60%',
+            md: '45%',
+            lg: '40%',
+            xl: '32%',
+            '2xl': '32%',
+            }} m='auto' pt='150px' pb='50px' pr='20px' pl='20px'>
             <Heading fontFamily='farfetch'>SIGN UP AND GET 15% OFF</Heading>
             <Text>Sign up for promotions, tailored new arrivals, stock <br /> updates and more – straight to your inbox</Text>
             <RadioGroup onChange={setValue} value={value}>
